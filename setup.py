@@ -12,7 +12,7 @@ setup(
     license='BSD',
     keywords='pubsub'.split(),
     platforms='any',
-    packages=find_packages(include=['etl_classes.*', 'pubsub.*']),
+    packages=find_packages(include=['pubsub.*', 'pubsub_etl.*']),
     include_package_data=False,
     #test_suite='test_dashvisor.run_tests.run_all',
     install_requires=[

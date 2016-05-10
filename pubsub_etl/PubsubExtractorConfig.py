@@ -8,7 +8,7 @@ from etl_framework.config_mixins.FiltersMixin import FiltersMixin
 
 #from etl_framework.config_mixins.DestinationMixin import DestinationMixin
 
-from config_mixins.PubsubExtractorMixin import PubsubExtractorMixin
+from pubsub_etl.config_mixins.PubsubExtractorMixin import PubsubExtractorMixin
 
 class PubsubExtractorConfig(
     ExtractorConfig,
