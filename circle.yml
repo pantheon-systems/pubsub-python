@@ -1,0 +1,26 @@
+machine:
+  services:
+    - docker
+
+#checkout hack found online to allow caching of copying requirements.txt file in Dockerfile
+checkout:
+  post:
+    - touch -t $(date -d "$(git log -1 --format=%ci requirements.txt)" +%y%m%d%H%M.%S) requirements.txt
+
+dependencies:
+  override:
+    - pip install --allow-all-external -r requirements.txt
+  cache_directories:
+    - venv
+
+database:
+  override:
+    #- mysql -u ubuntu circle_test < cassandra_scripts/all_tables_schema.sql
+
+test:
+    override:
+        # Run lints and basic checks
+        - ./scripts/build_tests.sh
+        #run below line to run pubsub integration tests on circle
+        #- python -m unittest discover tests
+

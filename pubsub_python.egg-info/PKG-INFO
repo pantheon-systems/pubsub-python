@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: pubsub-python
+Version: 0.1
+Summary: pubsub client wrappers
+Home-page: https://github.com/pantheon-systems/pubsub-python@master
+Author: Michael Liu
+Author-email: michael.liu@getpantheon.com
+License: BSD
+Description: UNKNOWN
+Keywords: pubsub
+Platform: any
