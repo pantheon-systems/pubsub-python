@@ -3,8 +3,8 @@
 import os
 import json
 
-from SubscriberMessage import SubscriberMessage
-from PubsubSubscriber import PubsubSubscriber
+from pubsub.SubscriberMessage import SubscriberMessage
+from pubsub.PubsubSubscriber import PubsubSubscriber
 
 class TopicLogger(PubsubSubscriber):
     """writes pubsub request messages to disk"""

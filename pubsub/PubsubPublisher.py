@@ -1,7 +1,7 @@
 """Subscriber class"""
 
 from pubsub.mixins.TopicMixin import TopicMixin
-from PubsubClient import PubsubClient
+from pubsub.PubsubClient import PubsubClient
 
 class PubsubPublisher(PubsubClient, TopicMixin):
     """publishes messages"""

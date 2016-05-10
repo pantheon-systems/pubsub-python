@@ -2,7 +2,7 @@
 pubsub publish message object
 """
 
-from PubsubMessage import PubsubMessage
+from pubsub.PubsubMessage import PubsubMessage
 
 class PublisherMessage(PubsubMessage):
     """Pubsub publish message object"""
