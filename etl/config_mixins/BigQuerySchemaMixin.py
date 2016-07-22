@@ -2,12 +2,12 @@
 
 #pylint: disable=relative-import
 
-class BigQuerySchemaMixin(object):
+class BigquerySchemaMixin(object):
     """parses configuration files"""
 
-    SCHEMA_ATTRIBUTE = 'big_query_schema'
+    SCHEMA_ATTRIBUTE = 'bigquery_schema'
 
-    def get_big_query_schema(self):
+    def get_bigquery_schema(self):
         """stuff"""
 
         return self.config[self.SCHEMA_ATTRIBUTE]

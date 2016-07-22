@@ -1,15 +1,15 @@
 """parses configuration and returns useful things"""
 
 from etl_framework.BaseConfig import BaseConfig
-from etl_framework.config_mixins.BigQuerySchemaMixin import BigQuerySchemaMixin
+from etl_framework.config_mixins.BigquerySchemaMixin import BigquerySchemaMixin
 
 from etl.config_mixins.GcloudMixin import GcloudMixin
-from etl.config_mixins.BigQueryMixin import BigQueryMixin
+from etl.config_mixins.BigqueryMixin import BigqueryMixin
 
-class BigQuerySchemaConfig(
+class BigquerySchemaConfig(
     BaseConfig,
-    BigQuerySchemaMixin,
-    BigQueryMixin,
+    BigquerySchemaMixin,
+    BigqueryMixin,
     GcloudMixin,
 )
     """parses configuration files"""
