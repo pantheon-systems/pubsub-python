@@ -6,7 +6,6 @@ class PubsubExtractorMixin(object):
     """parses configuration files"""
 
     PUBSUB_TOPIC_NAME_ATTR = 'pubsub_topic_name'
-    GCLOUD_PROJECT_ID_ATTR = 'gcloud_project_id'
     EXTRACTOR_LOADERS_ATTR = 'extractor_loaders'
     MESSAGE_FLUSHER_ATTR = 'message_flusher'
 
@@ -27,17 +26,6 @@ class PubsubExtractorMixin(object):
         """stuff"""
 
         return self.config[self.PUBSUB_TOPIC_NAME_ATTR]
-
-    @check_config_attr_default_none
-    def get_gcloud_project_id(self):
-        """stuff"""
-
-        return self.config[self.GCLOUD_PROJECT_ID_ATTR]
-
-    def set_gcloud_project_id(self, gcloud_project_id):
-        """stuff"""
-
-        self.config[self.GCLOUD_PROJECT_ID_ATTR] = gcloud_project_id
 
     @check_config_attr_default_none
     def get_extractor_loaders(self):

@@ -6,13 +6,13 @@ from etl_framework.config_mixins.SleepMixin import SleepMixin
 from etl_framework.config_mixins.BatchMixin import BatchMixin
 from etl_framework.config_mixins.FiltersMixin import FiltersMixin
 
-#from etl_framework.config_mixins.DestinationMixin import DestinationMixin
-
-from pubsub_etl.config_mixins.PubsubExtractorMixin import PubsubExtractorMixin
+from etl.config_mixins.GcloudMixin import GcloudMixin
+from etl.config_mixins.PubsubExtractorMixin import PubsubExtractorMixin
 
 class PubsubExtractorConfig(
     ExtractorConfig,
     FiltersMixin,
+    GcloudMixin,
     PubsubExtractorMixin,
     SleepMixin,
     BatchMixin
