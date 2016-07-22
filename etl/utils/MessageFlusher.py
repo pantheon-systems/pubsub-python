@@ -1,8 +1,8 @@
 """Acks messages"""
 #pylint: disable=super-on-old-class
 
-from pubsub.PubsubClient import PubsubClient
-from pubsub.mixins.MessageAckerMixin import MessageAckerMixin
+from clients.pubsub.PubsubClient import PubsubClient
+from clients.pubsub.mixins.MessageAckerMixin import MessageAckerMixin
 
 class MessageFlusher(PubsubClient, MessageAckerMixin):
     """writes buffered data to datastore and acks messages"""

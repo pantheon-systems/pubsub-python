@@ -3,7 +3,7 @@
 
 import time
 
-from pubsub.PubsubSubscriber import PubsubSubscriber
+from clients.pubsub.PubsubSubscriber import PubsubSubscriber
 
 from etl_framework.config_mixins.FiltersMixin import FiltersMixin
 from etl_framework.Extractor import Extractor

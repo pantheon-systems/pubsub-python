@@ -9,7 +9,7 @@ import httplib2
 from apiclient import discovery
 from oauth2client import client as oauth2client
 
-from pubsub.mixins.ProjectMixin import ProjectMixin
+from clients.mixins.ProjectMixin import ProjectMixin
 
 PUBSUB_SCOPES = ['https://www.googleapis.com/auth/pubsub']
 

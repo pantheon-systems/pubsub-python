@@ -3,10 +3,10 @@
 
 from googleapiclient.errors import HttpError
 
-from pubsub.mixins.TopicMixin import TopicMixin
-from pubsub.mixins.MessageAckerMixin import MessageAckerMixin
-from pubsub.SubscriberMessage import SubscriberMessage
-from pubsub.PubsubClient import PubsubClient
+from clients.pubsub.mixins.TopicMixin import TopicMixin
+from clients.pubsub.mixins.MessageAckerMixin import MessageAckerMixin
+from clients.pubsub.SubscriberMessage import SubscriberMessage
+from clients.pubsub.PubsubClient import PubsubClient
 
 class PubsubSubscriber(PubsubClient, MessageAckerMixin, TopicMixin):
     """pulls messages"""

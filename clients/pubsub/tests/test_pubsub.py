@@ -6,11 +6,11 @@ import unittest
 
 from googleapiclient.errors import HttpError
 
-from pubsub.PubsubClient import PubsubClient
-from pubsub.PubsubPublisher import PubsubPublisher
-from pubsub.PubsubSubscriber import PubsubSubscriber
-from pubsub.TopicLogger import TopicLogger
-from pubsub.PublisherMessage import PublisherMessage
+from clients.pubsub.PubsubClient import PubsubClient
+from clients.pubsub.PubsubPublisher import PubsubPublisher
+from clients.pubsub.PubsubSubscriber import PubsubSubscriber
+from clients.pubsub.TopicLogger import TopicLogger
+from clients.pubsub.PublisherMessage import PublisherMessage
 
 class PubSubTestCases(unittest.TestCase):
     """tests pubsub classes"""

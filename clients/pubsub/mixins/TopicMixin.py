@@ -1,5 +1,5 @@
 """Mixin for PubsubClient to have Topic name attribute"""
-from pubsub.mixins.ProjectMixin import ProjectMixin
+from clients.mixins.ProjectMixin import ProjectMixin
 
 class TopicMixin(ProjectMixin):
     """mixin to ack Pubsub messages"""

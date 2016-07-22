@@ -1,7 +1,7 @@
 """Mixin for PubsubClient to have subscription attribute"""
 #pylint: disable=super-on-old-class
 
-from pubsub.mixins.ProjectMixin import ProjectMixin
+from clients.mixins.ProjectMixin import ProjectMixin
 
 class SubscriptionMixin(ProjectMixin):
     """mixin to ack Pubsub messages"""

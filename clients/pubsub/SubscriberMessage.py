@@ -3,7 +3,7 @@ pubsub subscribe message object
 """
 #pylint: disable=super-on-old-class
 
-from pubsub.PubsubMessage import PubsubMessage
+from clients.pubsub.PubsubMessage import PubsubMessage
 
 class SubscriberMessage(PubsubMessage):
     """Pubsub publish message object"""
