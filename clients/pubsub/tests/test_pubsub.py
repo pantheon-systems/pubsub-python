@@ -15,9 +15,9 @@ from clients.pubsub.PublisherMessage import PublisherMessage
 class PubSubTestCases(unittest.TestCase):
     """tests pubsub classes"""
 
-    PROJECT_NAME = 'test'
-    TOPIC_NAME = 'test'
-    SUBSCRIPTION = 'test'
+    PROJECT_NAME = 'pantheon-dev'
+    TOPIC_NAME = 'pubsub-test'
+    SUBSCRIPTION = 'pubsub-test'
     LOG_SUBSCRIPTION = 'logging'
     LOG_DIRECTORY = 'test_logs'
     DATA_VALUES = ['message %d'%index for index in range(10)]

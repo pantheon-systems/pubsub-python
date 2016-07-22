@@ -33,21 +33,16 @@ class BigqueryClientTestCases(unittest.TestCase):
             dataset_id=cls.dataset_id
         )
 
-    def test_create_dataset(self):
+        # Create a dataset and table (this indirectly tests create and delete)
+        cls.client.create_dataset(cls.dataset_id)
+        cls.client.create_table(cls.table_id)
 
-        self.client.create_dataset(self.dataset_id)
+    @classmethod
+    def tearDownClass(cls):
 
-    def test_create_table(self):
-
-        self.client.create_table(self.table_id)
-
-    def test_delete_dataset(self):
-
-        self.client.delete_dataset(self.dataset_id)
-
-    def test_delete_table(self):
-
-        self.client.delete_table(self.table_id)
+        # Remove table and dataset (this indirectly tests create and delete)
+        cls.client.delete_table(cls.table_id)
+        cls.client.delete_dataset(cls.dataset_id)
 
     def test_get_dataset(self):
 

@@ -19,8 +19,6 @@ class BigqueryClient(ProjectMixin, ClientMixin):
 
         super(BigqueryClient, self).__init__(*args, **kwargs)
 
-        self.project_id = 'pantheon-dev'
-
     def set_dataset_id(self, dataset_id):
 
         self.dataset_id = dataset_id
@@ -49,7 +47,6 @@ class BigqueryClient(ProjectMixin, ClientMixin):
                 "projectId": self.project_id,
                 "body": {
                     "datasetReference": {
-                        "projectId": self.project_id,
                         "datasetId": dataset_id,
                     }
                 }

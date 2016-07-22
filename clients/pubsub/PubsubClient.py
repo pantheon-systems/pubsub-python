@@ -10,46 +10,23 @@ from apiclient import discovery
 from oauth2client import client as oauth2client
 
 from clients.mixins.ProjectMixin import ProjectMixin
+from clients.mixins.ClientMixin import ClientMixin
 
 PUBSUB_SCOPES = ['https://www.googleapis.com/auth/pubsub']
 
-class PubsubClient(ProjectMixin):
+class PubsubClient(ProjectMixin, ClientMixin):
     """instance of pubsub client"""
 
-    def __init__(self, http=None, num_retries=3, *args, **kwargs):
+    CLIENT_SERVICE = 'pubsub'
+    CLIENT_SERVICE_VERSION = 'v1'
+    CLIENT_SCOPES = ['https://www.googleapis.com/auth/pubsub']
+
+    def __init__(self, num_retries=3, *args, **kwargs):
         """instantiate pubsub client"""
 
-        self.http = http
         self.num_retries = num_retries
-        self.client = None
 
         super(PubsubClient, self).__init__(*args, **kwargs)
-
-    def get_client(self):
-        """returns pubsub client"""
-
-        if self.client:
-            pass
-        else:
-            self.client = self._create_client()
-
-        return self.client
-
-    def _create_client(self):
-        """creates a pubsub client"""
-
-        credentials = oauth2client.GoogleCredentials.get_application_default()
-        if credentials.create_scoped_required():
-            credentials = credentials.create_scoped(PUBSUB_SCOPES)
-
-        if not self.http:
-            http = httplib2.Http()
-        else:
-            http = self.http
-
-        credentials.authorize(http)
-
-        return discovery.build('pubsub', 'v1', http=http)
 
     def create_topic(self, topic_name):
         """
