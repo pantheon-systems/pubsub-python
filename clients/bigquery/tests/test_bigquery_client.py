@@ -13,6 +13,16 @@ class BigqueryClientTestCases(unittest.TestCase):
         cls.project_id = 'pantheon-dev'
         cls.dataset_id = 'test'
         cls.table_id = 'test'
+        cls.table_schema = {
+            "fields": [
+                {
+                    "type": "STRING",
+                    "name": "a_key",
+                    "mode": "REQUIRED",
+                }
+            ]
+        }
+
         cls.rows = [
             {
                 "insertId": "some_uuid",
@@ -22,7 +32,7 @@ class BigqueryClientTestCases(unittest.TestCase):
             },
         ]
 
-        cls.query = "SELECT * FROM [{}:{}.{}]".format(
+        cls.query = "SELECT a_key FROM [{}:{}.{}]".format(
             cls.project_id,
             cls.dataset_id,
             cls.table_id,
@@ -35,7 +45,10 @@ class BigqueryClientTestCases(unittest.TestCase):
 
         # Create a dataset and table (this indirectly tests create and delete)
         cls.client.create_dataset(cls.dataset_id)
-        cls.client.create_table(cls.table_id)
+        cls.client.create_table(
+            table_id=cls.table_id,
+            schema=cls.table_schema
+        )
 
     @classmethod
     def tearDownClass(cls):

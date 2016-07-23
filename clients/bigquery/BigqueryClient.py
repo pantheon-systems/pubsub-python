@@ -44,13 +44,10 @@ class BigqueryClient(ProjectMixin, ClientMixin):
     def create_dataset(self, dataset_id):
 
         body = {
-                "projectId": self.project_id,
-                "body": {
-                    "datasetReference": {
-                        "datasetId": dataset_id,
-                    }
-                }
+            "datasetReference": {
+                "datasetId": dataset_id,
             }
+        }
 
         return self.get_client().datasets().insert(
             projectId=self.project_id,
@@ -237,7 +234,8 @@ class BigqueryClient(ProjectMixin, ClientMixin):
             body=body
         ).execute()
 
-        if len(response["insertErrors"]) > 0:
+        print response
+        if "insertErrors" in response:
             raise BigQueryInsertError(response["insertErrors"])
 
         return response
