@@ -13,7 +13,7 @@ class BigqueryMixin(object):
     def get_bigquery_dataset_id(self):
         """stuff"""
 
-        return self.config[self.DATASET_ID_ATTRIBUTE] 
+        return self.config[self.DATASET_ID_ATTRIBUTE]
 
     @check_config_attr_default_none
     def get_bigquery_table_id(self):

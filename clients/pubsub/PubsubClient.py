@@ -4,11 +4,6 @@ this code was more or less copied from https://cloud.google.com/pubsub/configure
 """
 #pylint: disable=super-on-old-class
 
-import httplib2
-
-from apiclient import discovery
-from oauth2client import client as oauth2client
-
 from clients.mixins.ProjectMixin import ProjectMixin
 from clients.mixins.ClientMixin import ClientMixin
 

@@ -1,4 +1,5 @@
 """exceptions"""
 
-class BigQueryInsertError(Exception): pass
+class BigQueryInsertError(Exception):
+    pass
 
