@@ -234,7 +234,6 @@ class BigqueryClient(ProjectMixin, ClientMixin):
             body=body
         ).execute()
 
-        print response
         if "insertErrors" in response:
             raise BigQueryInsertError(response["insertErrors"])
 

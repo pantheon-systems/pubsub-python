@@ -91,7 +91,8 @@ class BigqueryClientTestCases(unittest.TestCase):
     def test_patch_table(self):
 
         self.client.patch_table(
-            table_id=self.table_id
+            table_id=self.table_id,
+            schema=self.table_schema,
         )
 
     def test_query(self):
@@ -103,6 +104,7 @@ class BigqueryClientTestCases(unittest.TestCase):
     def test_update_table(self):
 
         self.client.update_table(
-            table_id=self.table_id
+            table_id=self.table_id,
+            schema=self.table_schema,
         )
 
