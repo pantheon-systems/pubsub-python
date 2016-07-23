@@ -44,8 +44,8 @@ class BigqueryClientTestCases(unittest.TestCase):
         )
 
         # Create a dataset and table (this indirectly tests create and delete)
-        cls.client.create_dataset(cls.dataset_id)
-        cls.client.create_table(
+        cls.client.insert_dataset(cls.dataset_id)
+        cls.client.insert_table(
             table_id=cls.table_id,
             schema=cls.table_schema
         )

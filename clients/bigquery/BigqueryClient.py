@@ -41,7 +41,7 @@ class BigqueryClient(ProjectMixin, ClientMixin):
 
         return query_response
 
-    def create_dataset(self, dataset_id):
+    def insert_dataset(self, dataset_id):
 
         body = {
             "datasetReference": {
@@ -156,7 +156,7 @@ class BigqueryClient(ProjectMixin, ClientMixin):
             body=body,
         ).execute()
                 
-    def create_table(self, table_id,
+    def insert_table(self, table_id,
         schema=None, dataset_id=None, expiration_time=None,
         time_partitioning=False, time_partitioning_expiration=None):
         """

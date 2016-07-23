@@ -24,7 +24,7 @@ class BigqueryLoader(
         super(BigqueryLoader, self).__init__(
             config=config,
             project_name=project_name,
-            dataset_id=dataset_id
+            dataset_id=dataset_id,
             *args,
             **kwargs
         )
