@@ -38,11 +38,11 @@ class BigqueryLoader(
             rows=self._buffered_values,
         )
 
-    def load(self, values):
+    def load(self, row):
         """stuff"""
 
-        values = self.config.get_bigquery_insert_filter()(values)
-        self.write_to_buffer(values)
+        row = self.config.get_bigquery_insert_filter()(row)
+        self.write_to_buffer(row)
 
     def set_db_credentials_from_config(self):
         """stuff"""
