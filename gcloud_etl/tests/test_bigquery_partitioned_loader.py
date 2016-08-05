@@ -1,12 +1,11 @@
 """tests bigquery loader"""
-
 import os
 
 import unittest
 from mock import MagicMock
 from mock import ANY
 
-from gcloud_etl.BigqueryLoader import BigqueryLoader
+from gcloud_etl.BigqueryPartitionedLoader import BigqueryPartitionedLoader
 from gcloud_etl.BigqueryLoaderConfig import BigqueryLoaderConfig
 from gcloud_etl import filter_functions
 
@@ -24,34 +23,17 @@ class BigQueryLoaderTestCases(unittest.TestCase):
             self.TEST_LOADER_CONFIG_FILEPATH
         )
 
+        # Set a dummy partition_chooser for config to pick up
+        filter_functions.choose_current_date_partition = MagicMock(
+            return_value="$20160101"
+        )
         self.loader_config.add_filters(filter_functions)
 
-        self.loader = BigqueryLoader(config=self.loader_config)
+        self.loader = BigqueryPartitionedLoader(config=self.loader_config)
 
         # Dont actually insert data
         self.mock_insert_data = MagicMock()
         self.loader.insert_data = self.mock_insert_data
-
-    def test_load(self):
-        """tests load method"""
-
-        # Mock write_to_buffer method
-        self.mock_write_to_buffer = MagicMock()
-        self.loader.write_to_buffer = self.mock_write_to_buffer
-
-        row = {
-            "field1": "test",
-            "field2": 2
-        }
-
-        self.loader.load(row)
-
-        self.mock_write_to_buffer.assert_called_with(
-            {
-               "insertId": ANY,
-               "json": row,
-            }
-        )
 
     def test_load_buffered(self):
         """tests load_buffered method"""
@@ -71,7 +53,7 @@ class BigQueryLoaderTestCases(unittest.TestCase):
 
         # table_id is specified in fixture loader_configuration!!
         self.mock_insert_data.asert_called_with(
-            table_id="test",
+            table_id="test$20160101",
             rows=[expected_row],
         )
 
