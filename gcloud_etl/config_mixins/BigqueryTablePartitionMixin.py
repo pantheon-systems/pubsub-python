@@ -10,10 +10,10 @@ class BigqueryTablePartitionMixin(AddFiltersMixin):
 
     BIGQUERY_TABLE_PARTITION_CHOOSER_ATTR = 'bigquery_table_partition_chooser'
 
-    def add_filters(self, filter_functions):
+    def add_filters_from_module(self, filter_functions):
         """override add_filters method of config object"""
 
-        super(BigqueryTablePartitionMixin, self).add_filters(filter_functions)
+        super(BigqueryTablePartitionMixin, self).add_filters_from_module(filter_functions)
 
         self.set_bigquery_tbigquery_table_partition_chooser(
             getattr(filter_functions,

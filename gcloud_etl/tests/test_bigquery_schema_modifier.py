@@ -3,7 +3,6 @@ import os
 
 import unittest
 from mock import MagicMock
-from mock import ANY
 
 from gcloud_etl.BigquerySchemaModifier import BigquerySchemaModifier
 from gcloud_etl.BigquerySchemaConfig import BigquerySchemaConfig
@@ -47,5 +46,5 @@ class BigQuerySchemaModifierTestCases(unittest.TestCase):
 
         # NOTE table_id is defined in schema_configuration fixture
         self.schema_modifier.delete_table.assert_called_with(
-            table_id="test"    
+            table_id="test"
         )

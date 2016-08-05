@@ -24,7 +24,7 @@ class BigQueryLoaderTestCases(unittest.TestCase):
             self.TEST_LOADER_CONFIG_FILEPATH
         )
 
-        self.loader_config.add_filters(filter_functions)
+        self.loader_config.add_filters_from_module(filter_functions)
 
         self.loader = BigqueryLoader(config=self.loader_config)
 
@@ -36,8 +36,8 @@ class BigQueryLoaderTestCases(unittest.TestCase):
         """tests load method"""
 
         # Mock write_to_buffer method
-        self.mock_write_to_buffer = MagicMock()
-        self.loader.write_to_buffer = self.mock_write_to_buffer
+        mock_write_to_buffer = MagicMock()
+        self.loader.write_to_buffer = mock_write_to_buffer
 
         row = {
             "field1": "test",
@@ -46,7 +46,7 @@ class BigQueryLoaderTestCases(unittest.TestCase):
 
         self.loader.load(row)
 
-        self.mock_write_to_buffer.assert_called_with(
+        mock_write_to_buffer.assert_called_with(
             {
                "insertId": ANY,
                "json": row,

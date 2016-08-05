@@ -27,7 +27,7 @@ class BigQueryLoaderTestCases(unittest.TestCase):
         filter_functions.choose_current_date_partition = MagicMock(
             return_value="$20160101"
         )
-        self.loader_config.add_filters(filter_functions)
+        self.loader_config.add_filters_from_module(filter_functions)
 
         self.loader = BigqueryPartitionedLoader(config=self.loader_config)
 

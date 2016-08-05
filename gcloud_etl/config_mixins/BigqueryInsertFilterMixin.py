@@ -10,10 +10,10 @@ class BigqueryInsertFilterMixin(AddFiltersMixin):
 
     BIGQUERY_INSERT_FILTER_ATTR = 'bigquery_insert_filter'
 
-    def add_filters(self, filter_functions):
+    def add_filters_from_module(self, filter_functions):
         """override add_filters method of config object"""
 
-        super(BigqueryInsertFilterMixin, self).add_filters(filter_functions)
+        super(BigqueryInsertFilterMixin, self).add_filters_from_module(filter_functions)
 
         self.set_bigquery_insert_filter(
             getattr(filter_functions,
