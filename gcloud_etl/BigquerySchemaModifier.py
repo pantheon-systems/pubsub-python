@@ -15,10 +15,8 @@ class BigquerySchemaModifier(
 
     def __init__(self, config, *args, **kwargs):
 
-        self.config = None
-
-        project_name = self.config.get_gcloud_project_id()
-        dataset_id = self.config.get_bigquery_dataset_id()
+        project_name = config.get_gcloud_project_id()
+        dataset_id = config.get_bigquery_dataset_id()
 
         super(BigquerySchemaModifier, self).__init__(
             project_name=project_name,

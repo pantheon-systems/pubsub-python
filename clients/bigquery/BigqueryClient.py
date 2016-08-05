@@ -20,6 +20,11 @@ class BigqueryClient(ProjectMixin, ClientMixin):
 
         super(BigqueryClient, self).__init__(*args, **kwargs)
 
+    def clear_connection(self):
+        """method necesary to satisfy inteface for a datastore"""
+
+        pass
+
     def set_dataset_id(self, dataset_id):
 
         self.dataset_id = dataset_id

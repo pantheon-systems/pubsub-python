@@ -18,8 +18,8 @@ class BigqueryLoader(
 
     def __init__(self, config, *args, **kwargs):
 
-        project_name = self.config.get_gcloud_project_id()
-        dataset_id = self.config.get_bigquery_dataset_id()
+        project_name = config.get_gcloud_project_id()
+        dataset_id = config.get_bigquery_dataset_id()
 
         super(BigqueryLoader, self).__init__(
             config=config,
