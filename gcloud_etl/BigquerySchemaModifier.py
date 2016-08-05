@@ -31,7 +31,11 @@ class BigquerySchemaModifier(
 
         self.insert_table(
             table_id=self.config.get_bigquery_table_id(),
-            schema=self.config.get_bigquery_schema()
+            schema=self.config.get_bigquery_schema(),
+            expiration_time=self.config.get_bigquery_table_expiration_time(),
+            time_partitioning=self.config.get_bigquery_table_time_partitioning(),
+            time_partitioning_expiration=\
+                self.config.get_bigquery_table_time_partitioning_expiration(),
         )
 
     def drop_table(self):
