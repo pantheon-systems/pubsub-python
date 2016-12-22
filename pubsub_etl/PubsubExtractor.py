@@ -8,24 +8,23 @@ from pubsub.PubsubSubscriber import PubsubSubscriber
 from etl_framework.config_mixins.FiltersMixin import FiltersMixin
 from etl_framework.Extractor import Extractor
 
-class PubsubExtractor(Extractor,
-    PubsubSubscriber,
+class PubsubExtractor(
+    Extractor,
     FiltersMixin
 ):
     """class to extract from Pubsub"""
 
-    def __init__(self, config):
+    def __init__(self, config, *args, **kwargs):
         """stuff"""
 
-        kwargs = {
-            "topic_name": config.get_pubsub_topic_name(),
-            "subscription_name": config.get_extractor_table(),
-            "batch_size": config.get_batch_size(),
-            "project_name": config.get_gcloud_project_id(),
-            "config": config
-        }
+        super(PubsubExtractor, self).__init__(config, *args, **kwargs)
 
-        super(PubsubExtractor, self).__init__(**kwargs)
+        self.datastore = PubsubSubscriber(
+            topic_name=config.get_pubsub_topic_name(),
+            subscription_name=config.get_extractor_table(),
+            batch_size=config.get_batch_size(),
+            project_name=config.get_gcloud_project_id()
+        )
 
     def extract(self): #pylint: disable=no-self-use
         """extracts data"""
@@ -49,7 +48,7 @@ class PubsubExtractor(Extractor,
                 message_flusher.flush()
                 batch_counter = 0
             else:
-                messages = self.pull(auto_ack=False, create_subscription=True)
+                messages = self.datastore.pull(auto_ack=False, create_subscription=True)
                 if messages is not None:
                     sleep_time = sleep_min_time
                     batch_counter += 1
