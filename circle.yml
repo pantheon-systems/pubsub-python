@@ -22,5 +22,5 @@ test:
         # Run lints and basic checks
         - ./scripts/build_tests.sh
         #run below line to run pubsub integration tests on circle
-        #- python -m unittest discover tests
+        - python -m unittest discover gcloud_etl
 
