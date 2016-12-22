@@ -1,3 +1,5 @@
+from googleapiclient.errors import HttpError
+
 from etl_framework.schemas.schema_interface import SchemaInterface
 from pubsub.PubsubClient import PubsubClient
 
@@ -14,7 +16,7 @@ class PubsubSchema(
             project_name=config.project
         )
 
-    def set_credentials_from_config(self):
+    def set_config_and_credentials(self, config):
         """stuff"""
 
         pass
@@ -22,22 +24,38 @@ class PubsubSchema(
     def delete(self):
         """stuff"""
 
-        self.delete_subscription(self.subscription)
+        self.delete_subscription(self.config.subscription)
 
     def create(self):
         """stuff"""
 
-        self.create_subscription(self.topic, self.subscription)
+        self.create_subscription(self.config.topic, self.config.subscription)
 
     def create_if_not_exists(self):
         """stuff"""
 
-        self.create()
+        try:
+            self.create()
+        except HttpError as e:
+            if  e.resp["status"] == "409":
+                print "\nWARNING : subscription {} already exists\n".format(
+                    self.config.subscription
+                )
+            else:
+                raise e
 
     def delete_if_exists(self):
         """stuff"""
 
-        self.delete()
+        try:
+            self.delete()
+        except HttpError as e:
+            if  e.resp["status"] == "404":
+                print "\nWARNING : subscription {} doesnt exist\n".format(
+                    self.config.subscription
+                )
+            else:
+                raise e
 
     def recreate(self):
         """stuff"""

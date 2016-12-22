@@ -6,11 +6,16 @@ class PubsubSchemaConfig(
     """parses configuration files"""
 
     @property
+    def project(self):
+
+        return self.config["project"]
+
+    @property
     def subscription(self):
 
-        self.config["subscription"]
+        return self.config["subscription"]
 
     @property
     def topic(self):
 
-        self.config["topic"]
+        return self.config["topic"]
