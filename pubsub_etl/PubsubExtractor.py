@@ -41,7 +41,6 @@ class PubsubExtractor(
         batch_max_count = self.config.get_batch_max_count()
         message_flusher = self.config.get_message_flusher()
         filter_function = self.config.get_filter()
-        destination_chooser = self.config.get_destination_chooser()
 
         while True:
             if batch_counter >= batch_max_count:
@@ -54,17 +53,16 @@ class PubsubExtractor(
                     batch_counter += 1
                     for message in messages:
                         message = filter_function(message)
-                        destination = destination_chooser(message)
-                        if destination:
+                        ack_id = message['ackId']
+                        has_appended_ack = False
+                        for destination in self.iter_destination_chooser(message):
                             # Add ackId before processing message
                             # This assumes further processing will ultimately save message to datastore
-                            ack_id = message['ackId']
-                            if ack_id:
+                            if not has_appended_ack:
                                 message_flusher.append_ack_id(ack_id)
-                                yield destination, message
-                            else:
-                                raise Exception("Shit happens")
-                        else:
+                                has_appended_ack = True
+                            yield destination, message
+                        if not has_appended_ack:
                             print 'WARNING: No destination for message {}'.format(message)
                 else:
                     message_flusher.flush()
