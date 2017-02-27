@@ -1,3 +1,4 @@
+### THIS IS DEPRECATED. Work has moved to https://github.com/pantheon-systems/etl-framework
 # pubsub-python
 Contains light wrappers around google's pubsub-client and useful classes for using with etl-framework
 
