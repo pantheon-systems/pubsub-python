@@ -2,6 +2,8 @@
 # pubsub-python
 Contains light wrappers around google's pubsub-client and useful classes for using with etl-framework
 
+[![Deprecated](https://img.shields.io/badge/Pantheon-Deprecated-yellow?logo=pantheon&color=FFDC28)](https://pantheon.io/docs/oss-support-levels#deprecated)
+
 # Example of script of reading messages from Pubsub
 
 ```
